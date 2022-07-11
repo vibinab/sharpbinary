@@ -52,6 +52,50 @@ class Node {
         }
         return current;
       }
+
+      preOrder() {
+        if (this.root == null) {
+          return null;
+        } else {
+          var result = new Array();
+          function traversePreOrder(node) {
+            result.push(node.data);
+            node.left && traversePreOrder(node.left);
+            node.right && traversePreOrder(node.right);
+          };
+          traversePreOrder(this.root);
+          return result;
+        };
+      }
+
+      iterate(){
+        if(this.root==null){
+            return null
+        }
+       else {
+
+        function iteratepreorder(root){
+        const stack=[root] 
+        const result=[] 
+        while (stack.length){
+            let node=stack.pop();
+
+            result.push(node.data)
+            if(node.right)stack.push(node.right)
+            if(node.left)stack.push(node.left)
+
+        }
+       
+        return result
+
+        }
+        let ans=iteratepreorder(this.root)
+        return ans
+        
+
+       }
+
+      }
   }
     
     
@@ -66,3 +110,5 @@ class Node {
   
   console.log(bst)
   console.log(bst.find(17))
+  console.log('preOrder: ' + bst.preOrder());
+  console.log(' iter preOrder: ' + bst.iterate());
